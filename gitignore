@@ -1,0 +1,39 @@
+# .env file with DB credentials and secrets
+.env
+
+# Logs
+/logs/
+*.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Vendor (si jamais tu ajoutes composer)
+vendor/
+
+# Node modules (si tu ajoutes du JS buildé)
+node_modules/
+dist/
+
+# IDE / editor config
+.vscode/
+.idea/
+
+# Cache et fichiers temporaires PHP
+*.cache
+*.tmp
+*.lock
+*.bak
+*.swp
+
+# Docker volumes / containers
+docker-compose.override.yml
+db_data/
+*.pid
+
+# Uploads utilisateurs
+/public/uploads/
+
+# Autres
+/public/assets/avatars/tmp/
