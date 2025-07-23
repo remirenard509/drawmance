@@ -7,9 +7,9 @@ services:
       - ./public:/var/www/html
       - ./src:/var/www/src
       - ./config:/var/www/config
+      - ./:/var/www
     depends_on:
       - db
-
   db:
     image: mysql:8.0
     restart: always
