@@ -26,7 +26,18 @@ $messages = Message::getLastMessagesForUser($user['id']);
 
 </head>
 <body>
-  <h1>Bienvenue, <?= htmlspecialchars($_SESSION['username']) ?> !</h1>
+  <a href="/profil">
+    <div class="section" style="display: flex; align-items: center; gap: 1rem;">
+        <img src="/uploads/<?= htmlspecialchars($user['avatar'] ?? 'default.png') ?>"
+            alt="Avatar"
+            style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+  </a>
+        <div>
+            <h2>Bienvenue, <?= htmlspecialchars($user['username']) ?></h2>
+            <p><?= htmlspecialchars($user['bio']) ?></p>
+        </div>
+    </div>
+  
   <h2>Matchs</h2>
   <?php if (empty($matches)): ?>
       <p>Vous n’avez pas encore de matchs.</p>

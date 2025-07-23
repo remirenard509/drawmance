@@ -33,9 +33,25 @@ class User
     public static function findById($id)
     {
         global $pdo;
-        $sql = "SELECT id, username, email, created_at FROM users WHERE id = ?";
+        $sql = "SELECT * FROM users WHERE id = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function update($id, $username, $email, $bio, $avatar = null)
+    {
+        global $pdo;
+
+        $sql = "UPDATE users SET username = ?, email = ?, bio = ?" .
+            ($avatar ? ", avatar = ?" : "") .
+            " WHERE id = ?";
+
+        $params = [$username, $email, $bio];
+        if ($avatar) $params[] = $avatar;
+        $params[] = $id;
+
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute($params);
     }
 }
